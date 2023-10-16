@@ -8,6 +8,7 @@ Welcome to the Learn-OOPs repository! This repository is designed to help you le
 - [Getting Started](#getting-started)
 - [Topics Covered](#topics-covered)
   - [Data Encapsulation](#data-encapsulation)
+  - [Data Abstraction](#data-abstraction)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -60,6 +61,86 @@ Eloquent Models: Eloquent models encapsulate database tables, allowing you to in
 - **Middleware:** Middleware in Laravel encapsulates HTTP request handling logic, allowing you to filter and modify requests and responses. Middleware classes encapsulate different aspects of request processing, promoting reusability and separation of concerns.
 - **Authentication**: Laravel's authentication system encapsulates user authentication, registration, and password reset functionality, making it easy to include secure user authentication in your application.
 In Laravel, and in PHP OOP in general, data encapsulation is a crucial principle for maintaining clean, secure, and modular code. It helps make your code more organized, secure, and maintainable by hiding implementation details and exposing a well-defined interface.
+#### Code Example
+```php
+class BankAccount {
+    private $accountBalance;
+
+    public function __construct($initialBalance) {
+        $this->accountBalance = $initialBalance;
+    }
+
+    public function deposit($amount) {
+        if ($amount > 0) {
+            $this->accountBalance += $amount;
+        }
+    }
+
+    public function withdraw($amount) {
+        if ($amount > 0 && $amount <= $this->accountBalance) {
+            $this->accountBalance -= $amount;
+        }
+    }
+
+    public function getBalance() {
+        return $this->accountBalance;
+    }
+}
+
+// Using Encapsulation
+$account = new BankAccount(1000);
+$account->deposit(500);
+$account->withdraw(200);
+$balance = $account->getBalance();
+
+echo "Account Balance: $" . $balance;
+
+```
+In this encapsulation example, the BankAccount class encapsulates the account balance as a private property, and methods like deposit, withdraw, and getBalance provide controlled access to the balance. This ensures that the account balance can't be directly manipulated from outside the class, promoting data security.
+
+### Data Abstraction
+#### Code Example
+```php
+interface BankAccountInterface {
+    public function deposit($amount);
+    public function withdraw($amount);
+    public function getBalance();
+}
+
+class AbstractBankAccount implements BankAccountInterface {
+    private $accountBalance;
+
+    public function __construct($initialBalance) {
+        $this->accountBalance = $initialBalance;
+    }
+
+    public function deposit($amount) {
+        if ($amount > 0) {
+            $this->accountBalance += $amount;
+        }
+    }
+
+    public function withdraw($amount) {
+        if ($amount > 0 && $amount <= $this->accountBalance) {
+            $this->accountBalance -= $amount;
+        }
+    }
+
+    public function getBalance() {
+        return $this->accountBalance;
+    }
+}
+
+// Using Abstraction
+$account = new AbstractBankAccount(1000);
+$account->deposit(500);
+$account->withdraw(200);
+$balance = $account->getBalance();
+
+echo "Account Balance: $" . $balance;
+
+```
+In this abstraction example, we use an interface BankAccountInterface to define the methods that a bank account should have. The AbstractBankAccount class implements this interface. The interface and the abstract class create an abstraction layer, hiding the internal details of the bank account implementation. This simplifies the interaction with the bank account, providing a clear and abstracted interface.
 
   ## Contributing
 We welcome contributions from the community! If you have knowledge to share or want to improve existing examples, please consider contributing. Here's how:
