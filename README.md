@@ -9,6 +9,7 @@ Welcome to the Learn-OOPs repository! This repository is designed to help you le
 - [Topics Covered](#topics-covered)
   - [Data Encapsulation](#data-encapsulation)
   - [Data Abstraction](#data-abstraction)
+  - [Method Overloading & Overriding](#method-overloading-&-overriding)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -141,6 +142,37 @@ echo "Account Balance: $" . $balance;
 
 ```
 In this abstraction example, we use an interface BankAccountInterface to define the methods that a bank account should have. The AbstractBankAccount class implements this interface. The interface and the abstract class create an abstraction layer, hiding the internal details of the bank account implementation. This simplifies the interaction with the bank account, providing a clear and abstracted interface.
+
+### Method Overloading
+#### Definition
+Method overloading is a feature in some programming languages that allows a class to have multiple methods with the same name but different parameters (usually a different number or types of parameters). The method that gets called is determined by the arguments provided when the method is invoked.
+#### Use in Laravel/PHP
+In Laravel, PHP doesn't support method overloading in the same way as languages like Java. You cannot overload PHP functions. Function signatures are based only on their names and do not include argument lists, so you cannot have two functions with the same name. Class method overloading is different in PHP than in many other languages.
+#### Real World Analogy
+Think of a TV remote control. It has a power button. If you press it once, the TV turns on. If you press it twice, it turns off. Same button, different actions depending on how it's used.
+### Method Overriding
+#### Definition
+Method overriding is a concept used in inheritance. In object-oriented languages, a subclass can provide a specific implementation of a method that is already defined in its parent class. The overridden method in the subclass should have the same name, return type, and parameters as the method in the parent class.
+#### Use In Laravel
+In Laravel, you can override methods when extending a parent class, often when using Eloquent models. For example, you might have a base User class with a getFullName method, and you want to override it in a Customer class:
+```php
+class User {
+    public function getFullName() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+}
+
+class Customer extends User {
+    public function getFullName() {
+        return $this->first_name . ' ' . $this->last_name . ' (Customer)';
+    }
+}
+
+```
+ #### Real World Analogy
+ Imagine you have a "vehicle" class with a "startEngine" method. You create a subclass "Car" that inherits from the "vehicle" class, and in the "Car" class, you override the "startEngine" method to perform actions specific to starting a car's engine.
+ ### Summary
+ In summary, method overloading allows multiple methods with the same name but different parameters, while method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its parent class. These concepts are used to handle polymorphism and dynamic dispatch in object-oriented programming.
 
   ## Contributing
 We welcome contributions from the community! If you have knowledge to share or want to improve existing examples, please consider contributing. Here's how:
