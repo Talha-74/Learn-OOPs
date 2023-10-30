@@ -177,6 +177,7 @@ class Customer extends User {
 
 ## Learning Resources
 ### [Object-Oriented PHP for Absolute Beginners](https://www.elated.com/object-oriented-php-for-absolute-beginners/)
+### [Last Minute Revision - OOPs](https://github.com/aman0046/LastMinuteRevision-OOP)
 
   ## Contributing
 We welcome contributions from the community! If you have knowledge to share or want to improve existing examples, please consider contributing. Here's how:
