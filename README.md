@@ -10,6 +10,7 @@ Welcome to the Learn-OOPs repository! This repository is designed to help you le
   - [Data Encapsulation](#data-encapsulation)
   - [Data Abstraction](#data-abstraction)
   - [Method Overloading & Overriding](#method-overloading-&-overriding)
+- [Learning Resources](#learning-resources)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -173,6 +174,9 @@ class Customer extends User {
  Imagine you have a "vehicle" class with a "startEngine" method. You create a subclass "Car" that inherits from the "vehicle" class, and in the "Car" class, you override the "startEngine" method to perform actions specific to starting a car's engine.
  ### Summary
  In summary, method overloading allows multiple methods with the same name but different parameters, while method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its parent class. These concepts are used to handle polymorphism and dynamic dispatch in object-oriented programming.
+
+## Learning Resources
+### [Object-Oriented PHP for Absolute Beginners](https://www.elated.com/object-oriented-php-for-absolute-beginners/)
 
   ## Contributing
 We welcome contributions from the community! If you have knowledge to share or want to improve existing examples, please consider contributing. Here's how:
