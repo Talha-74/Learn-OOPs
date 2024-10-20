@@ -7,9 +7,10 @@ Welcome to the Learn-OOPs repository! This repository is designed to help you le
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [Topics Covered](#topics-covered)
-  - [Data Encapsulation](#data-encapsulation)
-  - [Data Abstraction](#data-abstraction)
-  - [Method Overloading & Overriding](#method-overloading-&-overriding)
+   - [Inheritance](#inheritance)
+   - [Data Encapsulation](#data-encapsulation)
+   - [Data Abstraction](#data-abstraction)
+   - [Method Overloading & Overriding](#method-overloading-&-overriding)
 - [Learning Resources](#learning-resources)
 - [Contributing](#contributing)
 - [License](#license)
@@ -31,7 +32,119 @@ To get started with Learn-OOPs, follow these steps:
 
 
  ## Topics Covered
-   ### Data Encapsulation
+
+## Inheritance
+ #### Definition
+Inheritance is one of the core principles of OOP, where a class (child or subclass) can inherit the properties and methods of another class (parent or superclass). This promotes code reuse and the creation of hierarchical relationships between classes.
+### Types of Inheritance in PHP/Laravel
+#### 1. Single Inheritance:
+A child class inherits from a single parent class.
+```php
+class Vehicle {
+    public $type;
+
+    public function __construct($type) {
+        $this->type = $type;
+    }
+
+    public function startEngine() {
+        return "Starting engine of " . $this->type;
+    }
+}
+
+class Car extends Vehicle {
+    public function honk() {
+        return "Car is honking!";
+    }
+}
+
+$car = new Car('Car');
+echo $car->startEngine(); // Output: Starting engine of Car
+echo $car->honk(); // Output: Car is honking!
+
+```
+
+#### 2. Multilevel Inheritance:
+A child class inherits from a parent class, and that parent class inherits from another class, forming a chain of inheritance.
+```php
+class Animal {
+    public function eat() {
+        return "Eating...";
+    }
+}
+
+class Mammal extends Animal {
+    public function breathe() {
+        return "Breathing...";
+    }
+}
+
+class Dog extends Mammal {
+    public function bark() {
+        return "Barking!";
+    }
+}
+
+$dog = new Dog();
+echo $dog->eat(); // Output: Eating...
+echo $dog->breathe(); // Output: Breathing...
+echo $dog->bark(); // Output: Barking!
+
+```
+#### 3. Hierarchical Inheritance: 
+Multiple child classes inherit from a single parent class.
+```php
+class Shape {
+    public function area() {
+        return 0;
+    }
+}
+
+class Circle extends Shape {
+    public function area() {
+        return "Calculating area of Circle";
+    }
+}
+
+class Square extends Shape {
+    public function area() {
+        return "Calculating area of Square";
+    }
+}
+
+$circle = new Circle();
+echo $circle->area(); // Output: Calculating area of Circle
+
+$square = new Square();
+echo $square->area(); // Output: Calculating area of Square
+
+```
+#### 4. Multiple Inheritance (Using Traits in PHP):
+PHP doesn't support multiple inheritance directly, but traits allow a class to inherit functionality from multiple sources.
+```php
+trait Logger {
+    public function log($message) {
+        return "Logging message: " . $message;
+    }
+}
+
+trait FileHandler {
+    public function saveFile($file) {
+        return "Saving file: " . $file;
+    }
+}
+
+class FileLogger {
+    use Logger, FileHandler;
+}
+
+$fileLogger = new FileLogger();
+echo $fileLogger->log("System Error"); // Output: Logging message: System Error
+echo $fileLogger->saveFile("error.log"); // Output: Saving file: error.log
+
+```
+
+   ## Data Encapsulation
    #### Definition
    Data Encapsulation is a fundamental concept in Object-Oriented Programming (OOP) that involves bundling the data (attributes or properties) and methods (functions) that operate on that data into a single unit, called a class. The key principles of encapsulation are information hiding and data protection. In PHP, and specifically in Laravel, data encapsulation is essential for various reasons.
    #### Why do we use it?
